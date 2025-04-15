@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hot Wheels Store</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f2f2f2;
+    }
+
+    header {
+      background: linear-gradient(to right, #ff4500, #ff6a00);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 30px;
+    }
+
+    header img {
+      max-width: 100px;
+    }
+
+    .header-text {
+      flex-grow: 1;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 30px 10px;
+    }
+
+    .product {
+      background: white;
+      border: 2px solid #ff4500;
+      border-radius: 12px;
+      margin: 15px;
+      padding: 15px;
+      width: 220px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .product:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+    }
+
+    img.car-image {
+      max-width: 100%;
+      border-radius: 10px;
+      transition: transform 0.4s;
+    }
+
+    img.car-image:hover {
+      transform: none;
+    }
+
+    section h2 {
+      text-align: center;
+      margin-top: 30px;
+      color: #333;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #ff4500;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      margin-top: 15px;
+      cursor: pointer;
+      width: 100%;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #e03e00;
+    }
+
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
+
+    a {
+      color: #ffcc00;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="hotwheels-logo.png" alt="Hot Wheels Logo" />
+    <div class="header-text">
+      <h1>Welcome to Hot Wheels Store</h1>
+      <p>Get your favorite Hot Wheels now!</p>
+      <p>Visitors: <span id="visitorCount"></span></p>
+    </div>
+  </header>
+
+  <section class="products">
+    <div class="product">
+      <a href="product1.html">
+        <img class="car-image" src="McLAAREN F1.jpg" alt="Hot Wheels Car 1" />
+        <h3>McLaren F1</h3>
+        <p>Price: ₹500</p>
+      </a>
+    </div>
+    <div class="product">
+      <a href="product2.html">
+        <img class="car-image" src="51KmaKhGzhL.jpg" alt="Hot Wheels Car 2" />
+        <h3>2020 Koenigsegg Jesko</h3>
+        <p>Price: ₹600</p>
+      </a>
+    </div>
+    <div class="product">
+      <a href="product3.html">
+        <img class="car-image" src="96 Porsche careera.jpg" alt="Hot Wheels Car 3" />
+        <h3>296 Porsche Carrera</h3>
+        <p>Price: ₹600</p>
+      </a>
+    </div>
+    <div class="product">
+      <a href="product4.html">
+        <img class="car-image" src="Ford Mustang Dark Horse.jpg" alt="Hot Wheels Car 4" />
+        <h3>Ford Mustang Dark Horse</h3>
+        <p>Price: ₹600</p>
+      </a>
+    </div>
+    <div class="product">
+      <a href="product5.html">
+        <img class="car-image" src="87 Audi Quattro.jpg" alt="Hot Wheels Car 5" />
+        <h3>87 Audi Quattro</h3>
+        <p>Price: ₹600</p>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Order Details</h2>
+    <form action="https://formspree.io/f/xldjvkla" method="POST">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required />
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+      <label for="message">Order Details:</label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>Follow us on <a href="https://www.instagram.com/harshverma724/" target="_blank">Instagram</a></p>
+    <p>© 2025 Hot Wheels Store. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Visitor Counter Logic
+    let count = localStorage.getItem('visitorCount') || 0;
+    count++;
+    localStorage.setItem('visitorCount', count);
+    document.getElementById('visitorCount').innerText = count;
+  </script>
+</body>
+</html>
